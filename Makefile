@@ -6,7 +6,7 @@
 #    By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/27 02:44:28 by acrucesp          #+#    #+#              #
-#    Updated: 2021/09/15 19:59:39 by acrucesp         ###   ########.fr        #
+#    Updated: 2021/09/18 17:24:34 by acrucesp         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,20 +47,16 @@ $(OBJ): | $(OBJ_DIR)
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
 
-$(NAME):	libmlx.a Libft/libft.a $(OBJ) 
+$(NAME):	 		Libft/libft.a $(OBJ) 
 	$(CC) $(CFLAGS) -I Libft/inc/ -I inc/ $(MAIN) $(OBJ) Libft/libft.a -o $@ 
 
 Libft/libft.a: 		 
 	$(MAKE) -C Libft
 
-libmlx.a:
-	$(MAKE) -C mlx_mac 
-	cp mlx_mac/libmlx.a ./
-
 .PHONY:				all clean fclean re bonus
 
 clean:
-	$(RM) -rf $(OBJ_DIR) $(OBJ_BONUS_DIR)
+	$(RM) -rf $(OBJ_DIR) 
 	$(MAKE) -C Libft clean
 	$(RM) -rf libmlx.a
 
