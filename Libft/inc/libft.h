@@ -22,6 +22,11 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }	t_list;
+typedef struct  s_stack
+{
+    int number;
+    void *next;
+}               t_stack;
 void			*ft_memset(void *b, int c, size_t len);
 void			ft_bzero(void *s, size_t n);
 void			*ft_memcpy(void *dest, const void *src, size_t n);
@@ -80,5 +85,8 @@ int				ft_is_prime(int n);
 double			ft_dpower(double base, double power);
 double			ft_atof(char *str);
 int				ft_strcmp(const char *s1, const char *s2);
+
+
+t_stack         *ft_newstack(int number);
 
 #endif
