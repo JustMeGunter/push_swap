@@ -6,7 +6,7 @@
 /*   By: acrucesp <acrucesp@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 20:03:14 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/08/05 19:33:17 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/09/30 21:05:11 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }	t_list;
-typedef struct  s_stack
+typedef struct s_stack
 {
-    int number;
-    void *next;
-}               t_stack;
+	int		number;
+	void	*next;
+}				t_stack;
 void			*ft_memset(void *b, int c, size_t len);
 void			ft_bzero(void *s, size_t n);
 void			*ft_memcpy(void *dest, const void *src, size_t n);
@@ -42,6 +42,7 @@ char			*ft_strnstr(const char *haystack,
 					const char *needle, size_t len);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 int				ft_atoi(const char *nptr);
+long int		ft_atol(const char *nptr);
 int				ft_isalpha(int c);
 int				ft_isdigit(int c);
 int				ft_isascii(int c);
@@ -85,8 +86,6 @@ int				ft_is_prime(int n);
 double			ft_dpower(double base, double power);
 double			ft_atof(char *str);
 int				ft_strcmp(const char *s1, const char *s2);
-
-
-t_stack         *ft_newstack(int number);
+t_stack			*ft_newstack(int number);
 
 #endif

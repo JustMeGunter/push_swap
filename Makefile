@@ -6,20 +6,20 @@
 #    By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/27 02:44:28 by acrucesp          #+#    #+#              #
-#    Updated: 2021/09/18 17:24:34 by acrucesp         ###   ########.fr        #
+#    Updated: 2021/09/30 22:15:32 by acrucesp         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-D	 				=
+D	 				=	-g
 
 SRC_DIR				=	src/
-SRC					=	
+SRC					=	main.c parse_args.c
 
 OBJ_DIR				=	obj/
 OBJ					= 	$(addprefix $(OBJ_DIR), $(SRC:%.c=%.o))
 
 INC_DIR				=	inc/
-HEADER				= 	inc/.h
+HEADER				= 	pushswap.h
 
 NAME				=	push_swap	
 
