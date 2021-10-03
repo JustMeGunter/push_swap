@@ -6,7 +6,7 @@
 #    By: acrucesp <acrucesp@student.42madrid.c      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 17:42:40 by acrucesp          #+#    #+#              #
-#    Updated: 2021/09/30 22:02:50 by acrucesp         ###   ########.fr        #
+#    Updated: 2021/10/03 21:46:36 by acrucesp         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,8 @@ SRC = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c ft_memchr.c\
 	  ft_lstiter.c ft_putchar_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_putstr_fd.c\
 	  ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c ft_lstlast.c\
 	  ft_lstmap.c ft_strchrs.c ft_itoa_base.c ft_is_prime.c ft_dpower.c ft_atof.c\
-	  ft_strcmp.c ft_newstack.c ft_atol.c
+	  ft_strcmp.c ft_newstack.c ft_atol.c ft_stackadd_front.c ft_stackclear.c\
+	  ft_delstack.c
 
 
 OBJ_DIR = obj/

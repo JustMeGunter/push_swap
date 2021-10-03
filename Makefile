@@ -6,14 +6,14 @@
 #    By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/27 02:44:28 by acrucesp          #+#    #+#              #
-#    Updated: 2021/09/30 22:15:32 by acrucesp         ###   ########.fr        #
+#    Updated: 2021/10/03 20:19:13 by acrucesp         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 D	 				=	-g
 
 SRC_DIR				=	src/
-SRC					=	main.c parse_args.c
+SRC					=	main.c parse_args.c init_stack.c
 
 OBJ_DIR				=	obj/
 OBJ					= 	$(addprefix $(OBJ_DIR), $(SRC:%.c=%.o))

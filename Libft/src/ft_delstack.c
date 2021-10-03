@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_newstack.c                                      :+:      :+:    :+:   */
+/*   ft_delstack.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/03 19:59:08 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/10/03 21:16:11 by acrucesp         ###   ########.fr       */
+/*   Created: 2021/10/03 21:39:05 by acrucesp          #+#    #+#             */
+/*   Updated: 2021/10/03 21:49:26 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
-t_stack	*ft_newstack(int number)
+void	ft_delstack(t_stack *stack, void (*del)(int))
 {
-	t_stack	*elmt;
-
-	elmt = (t_stack *)ft_calloc(sizeof(*elmt), 1);
-	if (!elmt)
-		return (0);
-	elmt->number = number;
-	return (elmt);
+	if (!stack)
+		return ;
+	if (del)
+		del(stack->number);
+	free(stack);
 }
