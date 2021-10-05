@@ -5,18 +5,26 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/03 21:39:05 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/10/03 21:49:26 by acrucesp         ###   ########.fr       */
+/*   Created: 2021/10/05 22:09:13 by acrucesp          #+#    #+#             */
+/*   Updated: 2021/10/05 22:13:27 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_delstack(t_stack *stack, void (*del)(int))
+void	ft_stackdel(t_stack **stack)
 {
+	t_stack	*tmp;
+	t_stack *tmp_next;
+
 	if (!stack)
 		return ;
-	if (del)
-		del(stack->number);
-	free(stack);
+	tmp = *stack;
+	while(tmp)
+	{
+		tmp_next = tmp->next;
+		free(tmp);
+		tmp = tmp_next;
+	}
+	*stack = NULL;
 }

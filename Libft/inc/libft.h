@@ -6,7 +6,7 @@
 /*   By: acrucesp <acrucesp@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 20:03:14 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/10/03 21:54:55 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/10/05 22:15:24 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,6 @@ int				ft_strcmp(const char *s1, const char *s2);
 t_stack			*ft_newstack(int number);
 void			ft_stackadd_front(t_stack **last, t_stack *new);
 void			ft_stackclear(t_stack **stack, void(*del)(int));
-void			ft_delstack(t_stack *stack, void (*del)(int));
+void			ft_stackdel(t_stack **stack);
 
 #endif

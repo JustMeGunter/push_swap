@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stackclear.c                                    :+:      :+:    :+:   */
+/*   ft_stackdel.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/03 21:35:06 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/10/03 21:54:32 by acrucesp         ###   ########.fr       */
+/*   Created: 2021/10/05 22:14:26 by acrucesp          #+#    #+#             */
+/*   Updated: 2021/10/05 22:20:35 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_stackclear(t_stack **stack, void (*del)(int))
+void	ft_stackdel(t_stack **stack)
 {
-	t_stack	*last;
+	t_stack	*tmp;
+	t_stack *tmp_next;
 
 	if (!stack)
 		return ;
-	while (*stack)
+	tmp = *stack;
+	while(tmp)
 	{
-		last = (*stack)->next;
-		ft_delstack(*stack, del);
-		*stack = last;
+		tmp_next = tmp->next;
+		free(tmp);
+		tmp = tmp_next;
 	}
+	*stack = NULL;
 }
