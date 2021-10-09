@@ -6,14 +6,14 @@
 #    By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/27 02:44:28 by acrucesp          #+#    #+#              #
-#    Updated: 2021/10/05 22:17:39 by acrucesp         ###   ########.fr        #
+#    Updated: 2021/10/09 19:39:56 by acrucesp         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 D	 				=	-g
 
 SRC_DIR				=	src/
-SRC					=	main.c parse_args.c init_stack.c
+SRC					=	main.c parse_args.c init_stack.c ft_swapnode.c
 
 OBJ_DIR				=	obj/
 OBJ					= 	$(addprefix $(OBJ_DIR), $(SRC:%.c=%.o))
@@ -31,7 +31,7 @@ S					=	-fsanitize=address
 
 OPTIMIZED			=	-O3	
 
-CFLAGS				= 	-Wall -Wextra -Werror $(OPTIMIZED) $(D) 
+CFLAGS				= 	-Wall -Wextra -Werror $(D) 
 
 UNAME_S := $(shell uname -s)
 

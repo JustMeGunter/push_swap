@@ -6,7 +6,7 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/03 19:33:18 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/10/03 21:33:08 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/10/09 19:47:58 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,11 @@ int	init_stack(int *arr, int c, t_stack **stack_a)
 	while (--iter_c > -1)	
 	{
 		if (c == iter_c)
+		{
 			*stack_a = ft_newstack(arr[iter_c]);
+			if (!*stack_a)
+				return (0);
+		}
 		else
 		{
 			new = (t_stack *)malloc(sizeof(t_stack) * 1);	

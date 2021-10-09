@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pushswap.h                                         :+:      :+:    :+:   */
+/*   ft_swapnode.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/18 17:28:24 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/10/09 18:23:48 by acrucesp         ###   ########.fr       */
+/*   Created: 2021/10/09 18:08:30 by acrucesp          #+#    #+#             */
+/*   Updated: 2021/10/09 18:36:28 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSHSWAP_H
-# define PUSHSWAP_H
-# include <unistd.h>
-# include <stdlib.h>
-# include <libft.h>
-# include <stdio.h>
+#include <pushswap.h>
 
-int		digit_parser(char *str);
-int		notnull_values(char **argv);
-int		load_initial_values(char **argv, int **arr_num);
-int		init_stack(int *arr, int c, t_stack **stack_a);
-void	swapnode(t_stack **stack);
+void	swapnode(t_stack **stack)
+{
+	t_stack *tmp_first;
+	t_stack	*tmp_second;
+	t_stack	*tmp;
 
-#endif
+	tmp_first = *stack;
+	if (!tmp_first->next)	
+		return ;
+	tmp_second = tmp_first->next;
+	tmp = tmp_second->next;
+	tmp_second->next = tmp_first;
+	tmp_first->next = tmp;
+	*stack = tmp_second;
+}

@@ -6,7 +6,7 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/18 17:25:20 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/10/05 22:23:25 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/10/09 19:58:07 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,53 @@ void	check_leaks(void)
 	system("leaks push_swap");
 }
 
+void	read_stack(t_stack *stack)
+{
+	while (stack)
+	{
+		printf("from stack:%i\n", stack->number);
+		stack = stack->next;
+	}
+}
+
+// get node enved a number
+int	stackadd_node(t_stack **stack, int number)
+{
+	t_stack	*tmp;
+	t_stack	*new_node;
+	char	q;
+
+	if (!*stack)
+	{
+		*stack = ft_newstack(number);
+		if (!*stack)
+			return (0);
+		return (1);
+	}	
+	new_node = (t_stack *)ft_calloc(sizeof(*new_node), 1);
+	if (!new_node)
+		return (0);
+	tmp = *stack;
+	q = 0;
+	while (tmp && !q)
+	{
+		if (!tmp->next)	
+		{
+			tmp->next = new_node;
+			new_node->number = number;
+			new_node->next = NULL;
+			q = 1;
+		}
+		else
+			tmp = tmp->next;
+	}
+	return (1);
+}
+
 int	main(int argc, char *argv[])
 {
 	t_stack	*stack_a;
-	t_stack	*tmp;
+	t_stack	*stack_b;
     int		*arr;
     int		c;
 
@@ -42,14 +85,17 @@ int	main(int argc, char *argv[])
     c = notnull_values(argv);
 	if (!init_stack(arr, c, &stack_a))
 		return (0);	
-	tmp = stack_a;
+	if (!stackadd_node(&stack_b, 8))
+		return (0);
+	if (!stackadd_node(&stack_b, 9))
+		return (0);
+	read_stack(stack_b);
+	ft_stackdel(&stack_b);
     while (c-- > 0)
         printf("%i e\n", arr[c]);
-	while (stack_a)
-	{
-		printf("from stack:%i\n", stack_a->number);
-		stack_a = stack_a->next;
-	}
-	ft_stackdel(&tmp);
+	read_stack(stack_a);
+	swapnode(&stack_a);
+	read_stack(stack_a);
+	ft_stackdel(&stack_a);
 	free(arr);
 }
