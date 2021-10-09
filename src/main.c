@@ -6,7 +6,7 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/18 17:25:20 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/10/09 20:53:28 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/10/09 20:59:07 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	read_stack(t_stack *stack)
 
 int	stackadd_node(t_stack **stack, int number)
 {
-	t_stack	*tmp;
+	//t_stack	*tmp;
 	t_stack	*new_node;
 	char	q;
 
@@ -48,19 +48,18 @@ int	stackadd_node(t_stack **stack, int number)
 	new_node = (t_stack *)ft_calloc(sizeof(*new_node), 1);
 	if (!new_node)
 		return (0);
-	tmp = *stack;
 	q = 0;
-	while (tmp && !q)
+	while (*stack && !q)
 	{
-		if (!tmp->next)	
+		if (!(*stack)->next)	
 		{
-			tmp->next = new_node;
+			(*stack)->next = new_node;
 			new_node->number = number;
 			new_node->next = NULL;
 			q = 1;
 		}
 		else
-			tmp = tmp->next;
+			*stack = (*stack)->next;
 	}
 	return (1);
 }
