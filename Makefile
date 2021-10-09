@@ -6,14 +6,15 @@
 #    By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/27 02:44:28 by acrucesp          #+#    #+#              #
-#    Updated: 2021/10/09 19:39:56 by acrucesp         ###   ########.fr        #
+#    Updated: 2021/10/09 20:29:37 by acrucesp         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 D	 				=	-g
 
 SRC_DIR				=	src/
-SRC					=	main.c parse_args.c init_stack.c ft_swapnode.c
+SRC					=	main.c parse_args.c init_stack.c ft_swapnode.c\
+						ft_pushnode.c
 
 OBJ_DIR				=	obj/
 OBJ					= 	$(addprefix $(OBJ_DIR), $(SRC:%.c=%.o))

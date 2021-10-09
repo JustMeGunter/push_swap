@@ -6,7 +6,7 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/18 17:25:20 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/10/09 19:58:07 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/10/09 20:53:28 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	read_stack(t_stack *stack)
 	}
 }
 
-// get node enved a number
 int	stackadd_node(t_stack **stack, int number)
 {
 	t_stack	*tmp;
@@ -85,17 +84,18 @@ int	main(int argc, char *argv[])
     c = notnull_values(argv);
 	if (!init_stack(arr, c, &stack_a))
 		return (0);	
-	if (!stackadd_node(&stack_b, 8))
-		return (0);
-	if (!stackadd_node(&stack_b, 9))
-		return (0);
-	read_stack(stack_b);
-	ft_stackdel(&stack_b);
     while (c-- > 0)
         printf("%i e\n", arr[c]);
 	read_stack(stack_a);
 	swapnode(&stack_a);
 	read_stack(stack_a);
+	stackadd_node(&stack_b, 8);
+	pushnode(&stack_a, &stack_b);
+	write(1, "\n", 1);
+	read_stack(stack_a);
+	write(1, "\n", 1);
+	read_stack(stack_b);
 	ft_stackdel(&stack_a);
+	ft_stackdel(&stack_b);
 	free(arr);
 }

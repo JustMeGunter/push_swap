@@ -6,7 +6,7 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/18 17:28:24 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/10/09 18:23:48 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/10/09 20:47:38 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,6 @@ int		notnull_values(char **argv);
 int		load_initial_values(char **argv, int **arr_num);
 int		init_stack(int *arr, int c, t_stack **stack_a);
 void	swapnode(t_stack **stack);
+void	pushnode(t_stack **stack_a, t_stack **stack_b);
 
 #endif
