@@ -6,7 +6,7 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/18 17:25:20 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/10/09 20:59:07 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/10/12 20:51:01 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,10 +90,37 @@ int	main(int argc, char *argv[])
 	read_stack(stack_a);
 	stackadd_node(&stack_b, 8);
 	pushnode(&stack_a, &stack_b);
-	write(1, "\n", 1);
+	write(1, "a\n", 2);
 	read_stack(stack_a);
-	write(1, "\n", 1);
+	write(1, "b\n", 2);
 	read_stack(stack_b);
+	pushnode(&stack_b, &stack_a);
+	write(1, "b\n", 2);
+	read_stack(stack_b);
+	write(1, "sb\n", 3);
+	read_stack(stack_b);
+	write(1, "\n", 1);
+	stackadd_node(&stack_b, 7);
+	write(1, "a\n", 2);
+	read_stack(stack_a);
+	write(1, "b\n", 2);
+	read_stack(stack_b);
+	swapnodes(&stack_a, &stack_b);
+	write(1, "sa\n", 3);
+	read_stack(stack_a);
+	write(1, "sb\n", 3);
+	read_stack(stack_b);
+	rotatenode(&stack_a);
+	write(1, "ra\n", 3);
+	read_stack(stack_a);
+	rotatenodes(&stack_a, &stack_b);
+	write(1, "a\n", 2);
+	read_stack(stack_a);
+	write(1, "b\n", 2);
+	read_stack(stack_b);
+	rrotatenode(&stack_a);
+	write(1, "ra\n", 3);
+	read_stack(stack_a);
 	ft_stackdel(&stack_a);
 	ft_stackdel(&stack_b);
 	free(arr);

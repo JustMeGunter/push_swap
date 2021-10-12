@@ -6,11 +6,17 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/09 18:08:30 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/10/09 18:36:28 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/10/12 19:43:19 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <pushswap.h>
+
+void	swapnodes(t_stack **stack_a, t_stack **stack_b)
+{
+	swapnode(stack_a);
+	swapnode(stack_b);
+}
 
 void	swapnode(t_stack **stack)
 {
