@@ -6,7 +6,7 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/18 17:25:20 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/10/14 19:51:24 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/10/14 18:45:45 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ int	stackadd_node(t_stack **stack, int number)
 	return (1);
 }
 
-
 int	main(int argc, char *argv[])
 {
 	t_stack	*stack_a;
@@ -85,9 +84,44 @@ int	main(int argc, char *argv[])
     c = notnull_values(argv);
 	if (!init_stack(arr, c, &stack_a))
 		return (0);	
-	select_resolution(arr, c);
     while (c-- > 0)
         printf("%i e\n", arr[c]);
+	read_stack(stack_a);
+	swapnode(&stack_a);
+	read_stack(stack_a);
+	stackadd_node(&stack_b, 8);
+	pushnode(&stack_a, &stack_b);
+	write(1, "a\n", 2);
+	read_stack(stack_a);
+	write(1, "b\n", 2);
+	read_stack(stack_b);
+	pushnode(&stack_b, &stack_a);
+	write(1, "b\n", 2);
+	read_stack(stack_b);
+	write(1, "sb\n", 3);
+	read_stack(stack_b);
+	write(1, "\n", 1);
+	stackadd_node(&stack_b, 7);
+	write(1, "a\n", 2);
+	read_stack(stack_a);
+	write(1, "b\n", 2);
+	read_stack(stack_b);
+	swapnodes(&stack_a, &stack_b);
+	write(1, "sa\n", 3);
+	read_stack(stack_a);
+	write(1, "sb\n", 3);
+	read_stack(stack_b);
+	rotatenode(&stack_a);
+	write(1, "ra\n", 3);
+	read_stack(stack_a);
+	rotatenodes(&stack_a, &stack_b);
+	write(1, "a\n", 2);
+	read_stack(stack_a);
+	write(1, "b\n", 2);
+	read_stack(stack_b);
+	rrotatenode(&stack_a);
+	write(1, "ra\n", 3);
+	read_stack(stack_a);
 	ft_stackdel(&stack_a);
 	ft_stackdel(&stack_b);
 	free(arr);

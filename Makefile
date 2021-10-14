@@ -6,7 +6,7 @@
 #    By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/27 02:44:28 by acrucesp          #+#    #+#              #
-#    Updated: 2021/10/12 20:54:25 by acrucesp         ###   ########.fr        #
+#    Updated: 2021/10/14 19:01:30 by acrucesp         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@ D	 				=	-g
 
 SRC_DIR				=	src/
 SRC					=	main.c parse_args.c init_stack.c ft_swapnode.c\
-						ft_pushnode.c ft_rotatenode.c  ft_rrotatenode.c 
+						ft_pushnode.c ft_rotatenode.c  ft_rrotatenode.c\
+					   	select_resolution.c	
 
 OBJ_DIR				=	obj/
 OBJ					= 	$(addprefix $(OBJ_DIR), $(SRC:%.c=%.o))
