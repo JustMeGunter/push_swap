@@ -6,7 +6,7 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 22:07:28 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/09/30 22:11:29 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/10/16 18:06:51 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,19 @@
 
 int digit_parser(char *str)
 {
-    int i;
-    int s;
+	t_vloop	tvar;
 
-    i = -1;
-    s = 0;
+    tvar.i = -1;
+    tvar.k = 0;
     if (!str[0])
         return (0);
-    while (str[++i])
+    while (str[++tvar.i])
     {
-        if (str[i] == '-')
-            s++;
-        if (s > 1)
+        if (str[tvar.i] == '-')
+            tvar.k++;
+        if (tvar.k > 1)
             return(0);
-        if (!ft_isdigit(str[i]) && str[i] != '-')
+        if (!ft_isdigit(str[tvar.i]) && str[tvar.i] != '-')
             return (0);
     }
     return (1);

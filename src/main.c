@@ -6,7 +6,7 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/18 17:25:20 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/10/16 17:19:01 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/10/16 18:39:26 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,25 @@ int	reverse_array(int **arr, int c)
 	return (1);
 }
 
+int	no_rn(int *arr, int c)
+{
+	t_vloop tvar;
+
+	tvar.i = -1;
+	tvar.j = -1;
+	tvar.k = 0;
+	while (++tvar.i < c)
+	{
+		while (++tvar.j < c)
+			if (arr[tvar.i] == arr[tvar.j])
+				tvar.k++;
+		if (tvar.k > 1)
+			return (0);
+		tvar.k = 0;
+		tvar.j = -1;
+	}
+	return (1);
+}
 int	main(int argc, char *argv[])
 {
 	t_stack	*stack_a;
@@ -68,6 +87,8 @@ int	main(int argc, char *argv[])
     if (!load_initial_values(argv, &arr) && error_msg())
         return(0);
     c = notnull_values(argv);
+	if (!no_rn(arr, c) && error_msg()) 
+		return (0);
 	if (reverse_array(&arr, c) && !init_stack(arr, c, &stack_a))
 		return (0);	
 	select_resolution(arr, c);
