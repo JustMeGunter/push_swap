@@ -6,7 +6,7 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/18 17:25:20 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/10/14 19:51:24 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/10/16 17:19:01 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,38 +32,23 @@ void	read_stack(t_stack *stack)
 	}
 }
 
-int	stackadd_node(t_stack **stack, int number)
+int	reverse_array(int **arr, int c)
 {
-	//t_stack	*tmp;
-	t_stack	*new_node;
-	char	q;
+	int		*tmp_arr;
+	t_vloop	vart;
 
-	if (!*stack)
-	{
-		*stack = ft_newstack(number);
-		if (!*stack)
-			return (0);
-		return (1);
-	}	
-	new_node = (t_stack *)ft_calloc(sizeof(*new_node), 1);
-	if (!new_node)
+	tmp_arr = (int *)malloc(c * sizeof(int));
+	if (!tmp_arr)
 		return (0);
-	q = 0;
-	while (*stack && !q)
-	{
-		if (!(*stack)->next)	
-		{
-			(*stack)->next = new_node;
-			new_node->number = number;
-			new_node->next = NULL;
-			q = 1;
-		}
-		else
-			*stack = (*stack)->next;
-	}
+	vart.i = c;
+	vart.j = 0;
+	while (--vart.i > -1)
+		tmp_arr[vart.j++] = (*arr)[vart.i];
+	while (c-- > 0)
+		(*arr)[c] = tmp_arr[c];
+	free(tmp_arr);
 	return (1);
 }
-
 
 int	main(int argc, char *argv[])
 {
@@ -83,7 +68,7 @@ int	main(int argc, char *argv[])
     if (!load_initial_values(argv, &arr) && error_msg())
         return(0);
     c = notnull_values(argv);
-	if (!init_stack(arr, c, &stack_a))
+	if (reverse_array(&arr, c) && !init_stack(arr, c, &stack_a))
 		return (0);	
 	select_resolution(arr, c);
     while (c-- > 0)

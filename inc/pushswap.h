@@ -6,7 +6,7 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/18 17:28:24 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/10/14 19:51:21 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/10/16 17:16:51 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,7 @@ void	rotatenodes(t_stack **stack_a, t_stack **stack_b);
 void	rrotatenode(t_stack **stack);
 void	rrotatenodes(t_stack **stack_a, t_stack **stack_b);
 int		select_resolution(int *arr, int c);
+int		stackadd_node(t_stack **stack, int number);
+int		algorithm_three(int **arr, int c);
 
 #endif
