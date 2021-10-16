@@ -6,7 +6,7 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/03 19:33:18 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/10/16 16:51:22 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/10/16 21:10:57 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int	init_stack(int *arr, int c, t_stack **stack_a)
 	int		iter_c;
 	t_stack *new;
 
-	iter_c = c;
-	while (--iter_c > -1)	
+	iter_c = -1;
+	while (++iter_c < c)	
 	{
 		if (c == iter_c)
 		{

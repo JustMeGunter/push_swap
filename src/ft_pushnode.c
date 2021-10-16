@@ -6,17 +6,15 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/09 20:09:36 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/10/12 19:43:20 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/10/16 20:45:35 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <pushswap.h>
 
-// get node enved a number
-void	pushnode(t_stack **stack_a, t_stack **stack_b)
+void	pushnode(t_stack **stack_a, t_stack **stack_b, char c)
 {
 	t_stack	*tmp_a;
-	//t_stack	*tmp_b;
 	t_stack *tmp;
 	t_stack *test;
 
@@ -35,5 +33,8 @@ void	pushnode(t_stack **stack_a, t_stack **stack_b)
 		tmp_a->next = test;
 		*stack_b = tmp_a; 	
 	}
-	// change node from top stack_a for first in stack_b and put second node if exists from stack_a as first
+	if (c == 'a')
+		write(1, "pa\n", 3);
+	else if (c == 'b')
+		write(1, "pb\n", 3);
 }

@@ -6,7 +6,7 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/18 17:25:20 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/10/16 19:55:41 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/10/16 21:04:46 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,9 +91,10 @@ int	main(int argc, char *argv[])
 		exit (0);
 	if (reverse_array(&arr, c) && !init_stack(arr, c, &stack_a))
 		exit (0);
-	select_resolution(arr, c);
+	select_resolution(arr, c, &stack_a, &stack_b);
     while (c-- > 0)
         printf("%i e\n", arr[c]);
+	read_stack(stack_a);
 	ft_stackdel(&stack_a);
 	ft_stackdel(&stack_b);
 	free(arr);

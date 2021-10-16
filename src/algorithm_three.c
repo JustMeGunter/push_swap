@@ -6,7 +6,7 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 17:03:33 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/10/16 17:21:30 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/10/16 21:20:46 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	order_array(int **arr, int c)
 	return (1);
 }
 
-int	algorithm_three(int **arr, int c)
+int	algorithm_three(int **arr, int c, t_stack **stack_a)
 {
 	int	*tarr;
 	int	tc;
@@ -52,8 +52,11 @@ int	algorithm_three(int **arr, int c)
 		tarr[tc] = (*arr)[tc];
 	if (!order_array(&tarr, c))
 		return (0);
-	if ((*arr)[0])
-	   (void)c;	
+	if ((*arr)[2] == tarr[0] && (*arr)[0] == tarr[2])
+	{
+		swapnode(stack_a, 'a');
+		rrotatenode(stack_a, 'a');		
+	}
 	free(tarr);
 	return (1);
 }
