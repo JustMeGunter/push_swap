@@ -6,7 +6,7 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/18 17:25:20 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/10/16 18:39:26 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/10/16 19:55:41 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,12 +85,12 @@ int	main(int argc, char *argv[])
         if (!digit_parser(argv[c]) && error_msg())
             return (0);
     if (!load_initial_values(argv, &arr) && error_msg())
-        return(0);
+        exit (0);
     c = notnull_values(argv);
 	if (!no_rn(arr, c) && error_msg()) 
-		return (0);
+		exit (0);
 	if (reverse_array(&arr, c) && !init_stack(arr, c, &stack_a))
-		return (0);	
+		exit (0);
 	select_resolution(arr, c);
     while (c-- > 0)
         printf("%i e\n", arr[c]);
