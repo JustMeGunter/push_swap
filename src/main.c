@@ -6,7 +6,7 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/18 17:25:20 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/10/17 16:38:13 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/10/17 21:24:59 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,32 +69,43 @@ int	no_rn(int *arr, int c)
 	}
 	return (1);
 }
+
+void	load_data(t_data *data, t_stack **stack_a, t_stack **stack_b,
+	   	int *arr)
+{
+	data->stack_a = stack_a;
+	data->stack_b = stack_b;
+	data->arr = arr;
+
+}
 int	main(int argc, char *argv[])
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
+	t_data	data;
     int		*arr;
-    int		c;
 
 	atexit(check_leaks);
 	if (argc < 3)
 		error_msg();
-    c = 0;
+    data.c = 0;
 	stack_b = NULL;
-    while (argv[++c])
-        if (!digit_parser(argv[c]) && error_msg())
+	ft_memset(&data, 0, sizeof(t_data));
+    while (argv[++data.c])
+        if (!digit_parser(argv[data.c]) && error_msg())
             return (0);
     if (!load_initial_values(argv, &arr) && error_msg())
         exit (0);
-    c = notnull_values(argv);
-	if (!no_rn(arr, c) && error_msg()) 
+    data.c = notnull_values(argv);
+	if (!no_rn(arr, data.c) && error_msg()) 
 		exit (0);
-	if (reverse_array(&arr, c) && !init_stack(arr, c, &stack_a))
+	if (reverse_array(&arr, data.c) && !init_stack(arr, data.c, &stack_a))
 		exit (0);
-	if (!select_resolution(arr, c, &stack_a, &stack_b))
+	load_data(&data, &stack_a, &stack_b, arr);
+	if (!select_resolution(&data))
 		exit (0);
-    while (c-- > 0)
-        printf("%i e\n", arr[c]);
+    while (data.c-- > 0)
+        printf("%i e\n", arr[data.c]);
 	read_stack(stack_a);
 	ft_stackdel(&stack_a);
 	ft_stackdel(&stack_b);

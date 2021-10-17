@@ -6,7 +6,7 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/18 17:28:24 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/10/17 18:51:46 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/10/17 21:21:42 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,14 @@ typedef struct	s_vloop
 	int		i;
 	int		j;
 }	t_vloop;
+typedef struct	s_data
+{
+	int		c;
+	int		*arr;
+	int		*tarr;
+	t_stack	**stack_a;
+	t_stack	**stack_b;
+}	t_data;
 typedef struct	s_tmpstacks
 {
 	t_stack	*tmp_first;
@@ -40,13 +48,17 @@ void	rotatenode(t_stack **stack, char c);
 void	rotatenodes(t_stack **stack_a, t_stack **stack_b);
 void	rrotatenode(t_stack **stack, char c);
 void	rrotatenodes(t_stack **stack_a, t_stack **stack_b);
-int		select_resolution(int *arr, int c, t_stack **stack_a, t_stack **stack_b);
+int		select_resolution(t_data *data);
 int		stackadd_node(t_stack **stack, int number);
 int		algorithm_three(int **arr, int c, t_stack **stack_a);
 int		ft_order_array(int **arr, int c);
 int		algorithm_two(int **arr, int c, t_stack **stack_a);
-int		algorithm_four(int **arr, int c, t_stack **stack_a, t_stack **stack_b);
+int		algorithm_four(t_data *data);
 void	read_stack(t_stack *stack);
 int		reverse_array(int **arr, int c);
+void	agfour_case_one(t_data *data);
+void	agfour_case_two(t_data *data);
+void	agfour_case_three(t_data *data);
+void	agfour_case_four(t_data *data);
 
 #endif

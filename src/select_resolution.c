@@ -6,32 +6,31 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 19:00:51 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/10/17 17:52:10 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/10/17 20:49:23 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <pushswap.h>
 
-int	select_resolution(int *arr, int c, t_stack **stack_a, t_stack **stack_b)
+int	select_resolution(t_data *data)
 {
-	if (c == 2)
+	if (data->c == 2)
 	{
-		if (!algorithm_two(&arr, c, stack_a))
+		if (!algorithm_two(data->arr, data->c, data->stack_a))
 			return (0);
 	}
-	else if (c == 3)
+	else if (data->c == 3)
 	{
-		if (!algorithm_three(&arr, c, stack_a))
+		if (!algorithm_three(data->arr, data->c, data->stack_a))
 			return (0);
 	}
-	else if (c == 4)
+	else if (data->c == 4)
 	{
-		if (!algorithm_four(&arr, c, stack_a, stack_b))
+		if (!algorithm_four(data))
 			return (0);
 	}
-	else if (c == 5)
-		if (!algorithm_three(&arr, c, stack_a))
+	else if (data->c == 5)
+		if (!algorithm_three(data->arr, data->c, data->stack_a))
 			return (0);
-	(void)stack_b;
 	return (1);
 }
