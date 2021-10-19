@@ -6,7 +6,7 @@
 #    By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/27 02:44:28 by acrucesp          #+#    #+#              #
-#    Updated: 2021/10/17 21:13:39 by acrucesp         ###   ########.fr        #
+#    Updated: 2021/10/19 20:42:24 by acrucesp         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ SRC					=	main.c parse_args.c init_stack.c ft_swapnode.c\
 						ft_pushnode.c ft_rotatenode.c  ft_rrotatenode.c\
 					   	select_resolution.c	ft_stackadd_node.c algorithm_three.c\
 						ft_order_array.c algorithm_two.c algorithm_four.c\
-						cases_algorithm_four.c
+						cases_algorithm_four.c ft_newstack.c ft_stackadd_front.c\
+						ft_stackdel.c
 
 OBJ_DIR				=	obj/
 OBJ					= 	$(addprefix $(OBJ_DIR), $(SRC:%.c=%.o))
@@ -56,6 +57,9 @@ $(NAME):	 		Libft/libft.a $(OBJ)
 
 sanitize:	 		Libft/libft.a $(OBJ) 
 	$(CC) $(CFLAGS) $(S) -I Libft/inc/ -I inc/ $(MAIN) $(OBJ) Libft/libft.a -o $@ 
+
+debug:	 		Libft/libft.a $(OBJ) 
+	$(CC) $(CFLAGS) $(D) -I Libft/inc/ -I inc/ $(MAIN) $(OBJ) Libft/libft.a -o $@ 
 
 Libft/libft.a: 		 
 	$(MAKE) -C Libft

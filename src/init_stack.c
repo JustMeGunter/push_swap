@@ -6,7 +6,7 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/03 19:33:18 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/10/16 21:10:57 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/10/19 20:38:30 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,11 @@ int	init_stack(int *arr, int c, t_stack **stack_a)
 	iter_c = -1;
 	while (++iter_c < c)	
 	{
-		if (c == iter_c)
-		{
-			*stack_a = ft_newstack(arr[iter_c]);
-			if (!*stack_a)
-				return (0);
-		}
-		else
-		{
-			new = (t_stack *)malloc(sizeof(t_stack) * 1);	
-			if (!new)
-				return (0);
-			new->number = arr[iter_c];
-			ft_stackadd_front(stack_a, new);
-		}
+		new = (t_stack *)malloc(sizeof(t_stack) * 1);	
+		if (!new)
+			return (0);
+		new->number = arr[iter_c];
+		ft_stackadd_front(stack_a, new);
 	}
 	return (1);
 }

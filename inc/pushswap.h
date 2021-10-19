@@ -6,7 +6,7 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/18 17:28:24 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/10/17 21:21:42 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/10/19 21:03:07 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,12 @@
 # include <libft.h>
 # include <stdio.h>
 
+
+typedef struct s_stack
+{
+	int		number;
+	void	*next;
+}				t_stack;
 typedef struct	s_vloop
 {
 	char	k;
@@ -37,6 +43,7 @@ typedef struct	s_tmpstacks
 	t_stack	*tmp_last;
 	t_stack	*tmp_stack;
 }	t_tmpstacks;
+
 int		digit_parser(char *str);
 int		notnull_values(char **argv);
 int		load_initial_values(char **argv, int **arr_num);
@@ -58,7 +65,11 @@ void	read_stack(t_stack *stack);
 int		reverse_array(int **arr, int c);
 void	agfour_case_one(t_data *data);
 void	agfour_case_two(t_data *data);
-void	agfour_case_three(t_data *data);
-void	agfour_case_four(t_data *data);
+void	agfour_case_three(t_data *data, int *parr, int *tparr);
+void	agfour_case_four(t_data *data, int *parr, int *tparr);
+void	ft_stackadd_front(t_stack **last, t_stack *new);
+t_stack	*ft_newstack(int number);
+void	ft_stackdel(t_stack **stack);
+void	ft_stackclear(t_stack **stack, void(*del)(int));
 
 #endif

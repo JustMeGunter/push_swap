@@ -6,7 +6,7 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/17 21:09:14 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/10/17 21:23:01 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/10/19 21:07:22 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,20 +29,11 @@ void	agfour_case_two(t_data *data)
 		rotatenode(data->stack_a, 'a');
 }
 
-void	agfour_case_three(t_data *data)
+void	agfour_case_three(t_data *data, int *parr, int *tparr)
 {
-
-	int	*parr;
-	int	*tparr;
 	int	tc;
 	int	i;
 
-	tparr = (int *)malloc((data->c - 1) * sizeof(int));
-	if (!tparr)
-		exit (0);
-	parr = (int *)malloc((data->c - 1) * sizeof(int));
-	if (!parr)
-		exit (0);
 	tc = data->c + 1;
 	while (tc-- > 1)
 		tparr[tc - 1] = data->tarr[tc];	
@@ -63,24 +54,14 @@ void	agfour_case_three(t_data *data)
 	algorithm_three(&parr, data->c - 1, data->stack_a);
 	pushnode(data->stack_b, data->stack_a, 'a');
 	rotatenode(data->stack_a, 'a');
-	free(parr);
-	free(tparr);
 }
 
-void	agfour_case_four(t_data *data)
+void	agfour_case_four(t_data *data, int *parr, int *tparr)
 {
-	int	*parr;
-	int	*tparr;
 	int	tc;
 	int	i;
 
-	tparr = (int *)malloc((data->c - 1) * sizeof(int));
-	if (!tparr)
-		exit (0);
-	parr = (int *)malloc((data->c - 1) * sizeof(int));
-	if (!parr)
-		exit (0);
-		tc = data->c + 1;
+	tc = data->c + 1;
 	while (tc-- > 1)
 		tparr[tc - 1] = data->tarr[tc];	
 	tc = data->c;
@@ -95,6 +76,4 @@ void	agfour_case_four(t_data *data)
 	algorithm_three(&parr, data->c - 1, data->stack_a);
 	pushnode(data->stack_b, data->stack_a, 'a');
 	rotatenode(data->stack_a, 'a');
-	free(parr);
-	free(tparr);
 }

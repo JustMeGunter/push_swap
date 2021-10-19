@@ -6,7 +6,7 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/17 16:41:29 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/10/17 16:53:41 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/10/19 20:46:14 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,6 @@ int	algorithm_two(int **arr, int c, t_stack **stack_a)
 		return (0);
 	if ((*arr)[1] == tarr[0])	
 		swapnode(stack_a, 'a');
+	free(tarr);
 	return (1);
 }
