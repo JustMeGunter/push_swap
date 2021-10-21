@@ -6,7 +6,7 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/18 17:25:20 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/10/17 21:24:59 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/10/21 21:41:17 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ void	load_data(t_data *data, t_stack **stack_a, t_stack **stack_b,
 	data->arr = arr;
 
 }
+//algorithm 4 case: 2 4 1 3
+//algorithm 5 oreder ret 4
 int	main(int argc, char *argv[])
 {
 	t_stack	*stack_a;

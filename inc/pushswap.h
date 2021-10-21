@@ -6,7 +6,7 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/18 17:28:24 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/10/19 21:03:07 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/10/21 20:54:07 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct	s_tmpstacks
 	t_stack	*tmp_stack;
 }	t_tmpstacks;
 
+void	read_stack(t_stack *stack);
 int		digit_parser(char *str);
 int		notnull_values(char **argv);
 int		load_initial_values(char **argv, int **arr_num);
@@ -61,6 +62,7 @@ int		algorithm_three(int **arr, int c, t_stack **stack_a);
 int		ft_order_array(int **arr, int c);
 int		algorithm_two(int **arr, int c, t_stack **stack_a);
 int		algorithm_four(t_data *data);
+int		algorithm_five(t_data *data);
 void	read_stack(t_stack *stack);
 int		reverse_array(int **arr, int c);
 void	agfour_case_one(t_data *data);

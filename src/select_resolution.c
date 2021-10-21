@@ -6,7 +6,7 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 19:00:51 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/10/19 20:31:26 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/10/21 20:18:23 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,13 @@ int	select_resolution(t_data *data)
 			return (0);
 	}
 	else if (data->c == 5)
-		if (!algorithm_three(&data->arr, data->c, data->stack_a))
+	{
+		if (!algorithm_five(data))
 			return (0);
+	}
+	else if (data->c > 5)
+	{
+			return (0);
+	}
 	return (1);
 }
