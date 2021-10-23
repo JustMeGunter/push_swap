@@ -6,7 +6,7 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/17 16:54:28 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/10/19 21:06:17 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/10/23 19:07:36 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,25 @@
 
 static int	slct_tree_four(t_data *data)
 {
-	int	*parr;
-	int	*tparr;
+	int	*tmparr;
+	int	*o_tmparr;
 
-	tparr = (int *)malloc((data->c - 1) * sizeof(int));
-	if (!tparr)
+	o_tmparr = (int *)malloc((data->c - 1) * sizeof(int));
+	if (!o_tmparr)
 		exit (0);
-	parr = (int *)malloc((data->c - 1) * sizeof(int));
-	if (!parr)
+	tmparr = (int *)malloc((data->c - 1) * sizeof(int));
+	if (!tmparr)
 		exit (0);
 	if (data->arr[3] == data->tarr[0])
 		agfour_case_one(data);
 	else if (data->arr[2] == data->tarr[0])
-		agfour_case_two(data);
+		agfour_case_two(data, tmparr, o_tmparr);
 	else if (data->arr[1] == data->tarr[0])
-		agfour_case_three(data, parr, tparr);
+		agfour_case_three(data, tmparr, o_tmparr);
 	else if (data->arr[0] == data->tarr[0])
-		agfour_case_four(data, parr, tparr);
-	free(parr);
-	free(tparr);
+		agfour_case_four(data, tmparr, o_tmparr);
+	free(tmparr);
+	free(o_tmparr);
 	return (1);
 }
 
