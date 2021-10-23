@@ -6,7 +6,7 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/18 17:28:24 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/10/19 21:03:07 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/10/23 20:03:04 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int		algorithm_four(t_data *data);
 void	read_stack(t_stack *stack);
 int		reverse_array(int **arr, int c);
 void	agfour_case_one(t_data *data);
-void	agfour_case_two(t_data *data);
+void	agfour_case_two(t_data *data, int *parr, int *tparr);
 void	agfour_case_three(t_data *data, int *parr, int *tparr);
 void	agfour_case_four(t_data *data, int *parr, int *tparr);
 void	ft_stackadd_front(t_stack **last, t_stack *new);

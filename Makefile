@@ -6,7 +6,7 @@
 #    By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/27 02:44:28 by acrucesp          #+#    #+#              #
-#    Updated: 2021/10/19 20:42:24 by acrucesp         ###   ########.fr        #
+#    Updated: 2021/10/23 20:06:46 by acrucesp         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,6 +71,7 @@ clean:
 	$(MAKE) -C Libft clean
 	$(RM) -rf libmlx.a
 	$(RM) -rf sanitize
+	$(RM) -rf debug 
 
 fclean:				clean
 	$(RM) $(NAME)
