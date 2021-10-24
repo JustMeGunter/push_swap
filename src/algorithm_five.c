@@ -6,27 +6,48 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 20:06:32 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/10/23 21:39:42 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/10/24 17:36:10 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <pushswap.h>
 
-static int	slct_tree_five(t_data *data)
+static void second_step(t_data *data)
 {
-	int		*parr;
+	t_stack	*tmp_stack;
 	int		tc;
+	int		i;
+
+	tc = data->c;
+	i = 0;
+	data->c = 4;
+	data->arr = (int *)malloc((data->c) * sizeof(int));
+	if (!data->arr)
+		exit (0);
+	data->tarr = NULL;
+	tmp_stack = *data->stack_a;
+	tc = -1;
+	while (tmp_stack)
+	{
+		data->arr[++tc] = tmp_stack->number; 
+		tmp_stack = tmp_stack->next;
+	}
+	if (!reverse_array(&data->arr, data->c))
+		exit (0);
+	algorithm_four(data);
+	pushnode(data->stack_b, data->stack_a, 'a');
+	rotatenode(data->stack_a, 'a');
+}
+
+static void	first_step(t_data *data)
+{
 	t_stack	*tmp_stack;
 	int		i;
 	int		j;
 
-	parr = (int *)malloc((data->c - 1) * sizeof(int));
-	if (!parr)
-		exit (0);
 	i = 0; 
 	j = 0; 
 	tmp_stack = *data->stack_a;
-	printf("i: %i\n", data->tarr[4]); 
 	while (!j && tmp_stack)
 	{
 		if (data->tarr[0] == tmp_stack->number)
@@ -35,48 +56,15 @@ static int	slct_tree_five(t_data *data)
 		i++;
 	}
 	if (i < 4)
-	{
 		while (i-- > 1)
 			rotatenode(data->stack_a, 'a');
-	}
 	else
-	{
 		while (i++ <= 5)
 			rrotatenode(data->stack_a, 'a');
-	}
 	pushnode(data->stack_a, data->stack_b, 'b');
-	tc = data->c;
-	i = 0;
-	//while (tc-- > 0)
-	//	if (data->arr[tc] != data->tarr[0])
-	//		parr[i++] = data->arr[tc];
-	data->c = 4;
 	free(data->arr);
 	free(data->tarr);
-	data->arr = (int *)malloc((data->c) * sizeof(int));
-	if (!data->arr)
-		exit (0);
-	data->tarr = NULL;
-	//while (++tc < 4)
-	//	data->arr[tc] = parr[tc];	
-	tmp_stack = *data->stack_a;
-	tc = -1;
-	while (tmp_stack)
-	{
-		data->arr[++tc] = tmp_stack->number; 
-		tmp_stack = tmp_stack->next;
-	}
-	free(parr);
-	if (!reverse_array(&data->arr, data->c))
-		exit (0);
-	algorithm_four(data);
-	pushnode(data->stack_b, data->stack_a, 'a');
-	rotatenode(data->stack_a, 'a');
-	//printf("a\n"); 
-	//read_stack(*data->stack_a);
-	//printf("b\n"); 
-	//read_stack(*data->stack_b);
-	return (1);
+	second_step(data);
 }
 
 int	algorithm_five(t_data *data)
@@ -91,6 +79,6 @@ int	algorithm_five(t_data *data)
 		data->tarr[tc] = data->arr[tc];
 	if (!ft_order_array(&data->tarr, data->c))
 		return (0);
-	slct_tree_five(data);
+	first_step(data);
 	return (1);
 }
