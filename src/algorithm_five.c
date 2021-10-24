@@ -6,7 +6,7 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 20:06:32 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/10/24 17:36:10 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/10/24 19:03:36 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ static void second_step(t_data *data)
 	data->arr = (int *)malloc((data->c) * sizeof(int));
 	if (!data->arr)
 		exit (0);
-	data->tarr = NULL;
 	tmp_stack = *data->stack_a;
 	tc = -1;
 	while (tmp_stack)
@@ -32,8 +31,7 @@ static void second_step(t_data *data)
 		data->arr[++tc] = tmp_stack->number; 
 		tmp_stack = tmp_stack->next;
 	}
-	if (!reverse_array(&data->arr, data->c))
-		exit (0);
+	reverse_array(&data->arr, data->c);
 	algorithm_four(data);
 	pushnode(data->stack_b, data->stack_a, 'a');
 	rotatenode(data->stack_a, 'a');
@@ -64,21 +62,20 @@ static void	first_step(t_data *data)
 	pushnode(data->stack_a, data->stack_b, 'b');
 	free(data->arr);
 	free(data->tarr);
+	data->tarr = NULL;
 	second_step(data);
 }
 
-int	algorithm_five(t_data *data)
+void	algorithm_five(t_data *data)
 {
 	int	tc;
 
 	data->tarr = (int *)malloc(data->c * sizeof(int));
 	if (!data->tarr)
-		return (0);
+		exit (0);
 	tc = data->c;
 	while (tc-- > 0)
 		data->tarr[tc] = data->arr[tc];
-	if (!ft_order_array(&data->tarr, data->c))
-		return (0);
+	ft_order_array(&data->tarr, data->c);
 	first_step(data);
-	return (1);
 }

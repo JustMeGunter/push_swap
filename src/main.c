@@ -6,7 +6,7 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/18 17:25:20 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/10/23 21:42:34 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/10/24 19:00:28 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	reverse_array(int **arr, int c)
 
 	tmp_arr = (int *)malloc(c * sizeof(int));
 	if (!tmp_arr)
-		return (0);
+		exit (0);
 	vart.i = c;
 	vart.j = 0;
 	while (--vart.i > -1)
@@ -105,8 +105,6 @@ int	main(int argc, char *argv[])
 	load_data(&data, &stack_a, &stack_b, arr);
 	if (!select_resolution(&data))
 		exit (0);
-    while (data.c-- > 0)
-        printf("%i e\n", arr[data.c]);
 	read_stack(stack_a);
 	ft_stackdel(&stack_a);
 	ft_stackdel(&stack_b);

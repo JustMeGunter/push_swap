@@ -6,13 +6,13 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/17 16:43:16 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/10/17 16:44:32 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/10/24 18:53:30 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <pushswap.h>
 
-int	ft_order_array(int **arr, int c)
+void	ft_order_array(int **arr, int c)
 {
 	int		*tmp_arr;
 	t_vloop vart;
@@ -23,7 +23,7 @@ int	ft_order_array(int **arr, int c)
 	vart.j = 0;
 	tmp_arr = (int *)malloc(c * sizeof(int));
 	if (!tmp_arr)
-		return (0);
+		exit (0);
 	while (--iter_c > -1)
 	{
 		while (--vart.i > -1)
@@ -36,5 +36,4 @@ int	ft_order_array(int **arr, int c)
     while (c-- > 0)
 		(*arr)[c] = tmp_arr[c];
 	free(tmp_arr);
-	return (1);
 }

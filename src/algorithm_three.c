@@ -6,7 +6,7 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 17:03:33 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/10/17 18:50:01 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/10/24 18:59:40 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,20 +32,18 @@ static void	slct_tree_three(t_stack **stack_a, int **arr, int *tarr)
 		rrotatenode(stack_a, 'a');		
 }
 
-int	algorithm_three(int **arr, int c, t_stack **stack_a)
+void	algorithm_three(int **arr, int c, t_stack **stack_a)
 {
 	int	*tarr;
 	int	tc;
 
 	tarr = (int *)malloc(c * sizeof(int));
 	if (!tarr)
-		return (0);
+		exit (0);
 	tc = c;
 	while (tc-- > 0)
 		tarr[tc] = (*arr)[tc];
-	if (!ft_order_array(&tarr, c))
-		return (0);
+	ft_order_array(&tarr, c);
 	slct_tree_three(stack_a, arr, tarr);
 	free(tarr);
-	return (1);
 }
