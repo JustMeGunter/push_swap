@@ -6,7 +6,7 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/18 17:25:20 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/10/24 19:00:28 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/10/24 21:09:25 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	load_data(t_data *data, t_stack **stack_a, t_stack **stack_b,
 	data->arr = arr;
 
 }
-//change search and push bigger for smaller optimize 1 move
+
 int	main(int argc, char *argv[])
 {
 	t_stack	*stack_a;
@@ -103,10 +103,16 @@ int	main(int argc, char *argv[])
 	if (reverse_array(&arr, data.c) && !init_stack(arr, data.c, &stack_a))
 		exit (0);
 	load_data(&data, &stack_a, &stack_b, arr);
-	if (!select_resolution(&data))
-		exit (0);
+	select_resolution(&data);
 	read_stack(stack_a);
 	ft_stackdel(&stack_a);
 	ft_stackdel(&stack_b);
 	free(arr);
 }
+/*
+* Big than five:
+* -its is dived into chunks according to an appropiation
+* -start from smallest to largest chunk
+* -and swap into stack b if higher its bigger in the top of the steack or rotate if its 
+* bigger than the smaller in stack b for the first chunk. For the others only swap.
+ */
