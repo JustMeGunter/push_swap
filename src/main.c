@@ -6,7 +6,7 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/18 17:25:20 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/10/24 21:09:25 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/10/28 22:15:05 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ int	main(int argc, char *argv[])
 		exit (0);
 	load_data(&data, &stack_a, &stack_b, arr);
 	select_resolution(&data);
-	read_stack(stack_a);
+	//read_stack(stack_a);
 	ft_stackdel(&stack_a);
 	ft_stackdel(&stack_b);
 	free(arr);

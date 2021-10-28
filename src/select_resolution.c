@@ -6,7 +6,7 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 19:00:51 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/10/24 21:26:12 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/10/28 19:22:20 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,5 @@ void	select_resolution(t_data *data)
 	else if (data->c == 5)
 		algorithm_five(data);
 	else if (data->c > 5)
-			return ;
+		algorithm_large(data);
 }
