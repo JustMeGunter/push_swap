@@ -6,7 +6,7 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/18 17:28:24 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/10/28 19:24:51 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/10/31 01:47:09 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct	s_vloop
 typedef struct	s_data
 {
 	int		c;
+	int		initial;
 	int		*arr;
 	int		*tarr;
 	t_stack	**stack_a;
@@ -74,5 +75,8 @@ t_stack	*ft_newstack(int number);
 void	ft_stackdel(t_stack **stack);
 void	ft_stackclear(t_stack **stack, void(*del)(int));
 void	ft_order_array(int **arr, int c);
+int		return_smaller(int *arr, int size);
+int		return_bigger(int *arr, int size);
+void	launch_moves(t_data *data, int tcs, int tcb);
 
 #endif
