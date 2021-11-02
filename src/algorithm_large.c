@@ -6,7 +6,7 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 19:21:40 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/10/31 01:54:00 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/11/02 22:12:50 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	load_moves(t_data *data, int size, int n_chunks, int **tmp_arr)
 	while (++i < data->initial)
 	{
 		tmp_stack = *data->stack_a;
-		k = 0;
+		k = 1;
 		while (tmp_stack)
 		{
 			if (tmp_stack->number == data->tarr[i])
@@ -68,18 +68,18 @@ void	execute_move(t_data *data, int size, int **tmp_arr)
 		tcs = return_smaller(*tmp_arr, size);
 		tcb = return_bigger(*tmp_arr, size);
 		launch_moves(data, tcs, tcb);
-		if (tcs - 1 < data->initial - tcb)
-		{
-			while (++j < size)
-				if ((*tmp_arr)[j] == tcs)
-					(*tmp_arr)[j] = 0;
-		}
-		else
-		{
-			while (++j < size)
-				if ((*tmp_arr)[j] == tcb)
-					(*tmp_arr)[j] = 0;
-		}
+		//if (tcs < data->initial - tcb)
+		//{
+		//	while (++j < size)
+		//		if ((*tmp_arr)[j] == tcs - 1)
+		//			(*tmp_arr)[j] = 0;
+		//}
+		//else
+		//{
+		//	while (++j < size)
+		//		if ((*tmp_arr)[j] == tcb)
+		//			(*tmp_arr)[j] = 0;
+		//}
 		//printf("tcb %i, tcs:%i\n", tcb, tcs);
 		load_moves(data, size, -1, tmp_arr);
 	}
@@ -93,7 +93,7 @@ void	select_min_num_move(t_data *data, int size, int n_chunks)
 	if (!tmp_arr)
 		exit (0);
 	//while (n_chunks)
-	{
+	{	
 		load_moves(data, size, n_chunks, &tmp_arr);
 		execute_move(data, size, &tmp_arr);
 	//	n_chunks--;
