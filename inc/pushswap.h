@@ -6,7 +6,7 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/18 17:28:24 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/10/31 01:47:09 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/11/04 21:23:54 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct	s_data
 	int		initial;
 	int		*arr;
 	int		*tarr;
+	int		*c_chunk;
 	t_stack	**stack_a;
 	t_stack	**stack_b;
 }	t_data;
@@ -77,6 +78,6 @@ void	ft_stackclear(t_stack **stack, void(*del)(int));
 void	ft_order_array(int **arr, int c);
 int		return_smaller(int *arr, int size);
 int		return_bigger(int *arr, int size);
-void	launch_moves(t_data *data, int tcs, int tcb);
+int		launch_moves(t_data *data, int tcs, int tcb);
 
 #endif

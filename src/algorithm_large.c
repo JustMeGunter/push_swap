@@ -6,7 +6,7 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 19:21:40 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/11/02 22:12:50 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/11/04 22:33:19 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,15 @@ int		num_chunks(int c)
 	return (div - 1);
 }
 
-void	load_moves(t_data *data, int size, int n_chunks, int **tmp_arr)
+void	load_moves(t_data *data, int size, int nn, int **tmp_arr)
 {
 	t_stack	*tmp_stack;
 	int		i;
 	int		j;
 	int		k;
+	int		l;
+	int		s;
 	
-	(void)n_chunks;
 	i = data->initial - size;
 	j = 0;
 	while (++i < data->initial)
@@ -40,12 +41,33 @@ void	load_moves(t_data *data, int size, int n_chunks, int **tmp_arr)
 		k = 1;
 		while (tmp_stack)
 		{
-			if (tmp_stack->number == data->tarr[i])
+			l = 0;
+			if (data->c_chunk)
 			{
-				(*tmp_arr)[j] = k;	
-				printf("%i arr20 i:%i, j:%i, stackn: %i\n",
-						(*tmp_arr)[j], i, j, tmp_stack->number);
-				j++;
+				s = 0;
+				while (l < nn)
+				{
+					if (data->c_chunk[l] == data->tarr[i])
+						s = 1;
+					if ( !s && tmp_stack->number == data->tarr[i])
+					{
+						(*tmp_arr)[j] = k;	
+						printf("%i arr20 i:%i, j:%i, stackn: %i\n",
+								(*tmp_arr)[j], i, j, tmp_stack->number);
+						j++;
+					}
+					l++;
+				}
+			}
+			else
+			{
+				if	(tmp_stack->number == data->tarr[i])
+				{
+					(*tmp_arr)[j] = k;	
+					printf("%i arr20 i:%i, j:%i, stackn: %i\n",
+							(*tmp_arr)[j], i, j, tmp_stack->number);
+					j++;
+				}
 			}
 			tmp_stack = tmp_stack->next;
 			k++;
@@ -60,29 +82,24 @@ void	execute_move(t_data *data, int size, int **tmp_arr)
 	int	tcs;
 	int	i;
 	int	j;
+	int num;
 
 	i = size;
+	j = 0;
+	data->c_chunk = (int *)malloc(sizeof(int) * size);	
+	if (!data->c_chunk)
+		exit (0);
 	while (i--)
 	{
-		j = -1;
 		tcs = return_smaller(*tmp_arr, size);
 		tcb = return_bigger(*tmp_arr, size);
-		launch_moves(data, tcs, tcb);
-		//if (tcs < data->initial - tcb)
-		//{
-		//	while (++j < size)
-		//		if ((*tmp_arr)[j] == tcs - 1)
-		//			(*tmp_arr)[j] = 0;
-		//}
-		//else
-		//{
-		//	while (++j < size)
-		//		if ((*tmp_arr)[j] == tcb)
-		//			(*tmp_arr)[j] = 0;
-		//}
-		//printf("tcb %i, tcs:%i\n", tcb, tcs);
-		load_moves(data, size, -1, tmp_arr);
+		num = launch_moves(data, tcs, tcb);
+		printf("---->%i\n", num);
+		data->c_chunk[j++] = num;
+		printf("----x%i\n", data->c_chunk[j - 1]);
+		load_moves(data, size, j, tmp_arr);
 	}
+	free(data->c_chunk);
 }
 
 void	select_min_num_move(t_data *data, int size, int n_chunks)
