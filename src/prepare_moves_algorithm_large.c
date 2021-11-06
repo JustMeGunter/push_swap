@@ -6,7 +6,7 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 22:36:17 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/11/02 20:54:48 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/11/06 22:36:55 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,13 @@ int	return_smaller(int *arr, int size)
 
 	i = -1;
 	j = -1;
+	//change size between data->initial - data->c
 	while (++i < size)
 	{
 		while (++j < size)
 			if (arr[i] > arr[j])
 				j = size + 1;
-		if (j == size && arr[i] > 0)
+		if (j == size)
 			tcs = arr[i];
 		j = -1;	
 	}

@@ -6,7 +6,7 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 19:21:40 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/11/04 22:33:19 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/11/06 21:48:47 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	load_moves(t_data *data, int size, int nn, int **tmp_arr)
 	int		l;
 	int		s;
 	
-	i = data->initial - size;
+	i = data->initial - size - 1;
 	j = 0;
 	while (++i < data->initial)
 	{
@@ -49,14 +49,12 @@ void	load_moves(t_data *data, int size, int nn, int **tmp_arr)
 				{
 					if (data->c_chunk[l] == data->tarr[i])
 						s = 1;
-					if ( !s && tmp_stack->number == data->tarr[i])
-					{
-						(*tmp_arr)[j] = k;	
-						printf("%i arr20 i:%i, j:%i, stackn: %i\n",
-								(*tmp_arr)[j], i, j, tmp_stack->number);
-						j++;
-					}
 					l++;
+				}
+				if ( !s && tmp_stack->number == data->tarr[i])
+				{
+					(*tmp_arr)[j] = k;	
+					j++;
 				}
 			}
 			else
@@ -64,8 +62,6 @@ void	load_moves(t_data *data, int size, int nn, int **tmp_arr)
 				if	(tmp_stack->number == data->tarr[i])
 				{
 					(*tmp_arr)[j] = k;	
-					printf("%i arr20 i:%i, j:%i, stackn: %i\n",
-							(*tmp_arr)[j], i, j, tmp_stack->number);
 					j++;
 				}
 			}
@@ -91,8 +87,8 @@ void	execute_move(t_data *data, int size, int **tmp_arr)
 		exit (0);
 	while (i--)
 	{
-		tcs = return_smaller(*tmp_arr, size);
-		tcb = return_bigger(*tmp_arr, size);
+		tcs = return_smaller(*tmp_arr, size, data);
+		tcb = return_bigger(*tmp_arr, size, data);
 		num = launch_moves(data, tcs, tcb);
 		printf("---->%i\n", num);
 		data->c_chunk[j++] = num;
@@ -140,7 +136,6 @@ void	algorithm_large(t_data *data)
 	size = (data->c + 1) / tc;
 	printf("\nsize:%i, num:%i, data->c: %i\n", size, n_chunks, data->c);
 	//
-	//while (n_chunks)
 	select_min_num_move(data, size, n_chunks);
 	free(data->tarr);
 }

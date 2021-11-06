@@ -6,7 +6,7 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/18 17:28:24 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/11/04 21:23:54 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/11/06 21:49:11 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,8 @@ t_stack	*ft_newstack(int number);
 void	ft_stackdel(t_stack **stack);
 void	ft_stackclear(t_stack **stack, void(*del)(int));
 void	ft_order_array(int **arr, int c);
-int		return_smaller(int *arr, int size);
-int		return_bigger(int *arr, int size);
+int		return_smaller(int *arr, int size, data);
+int		return_bigger(int *arr, int size, data);
 int		launch_moves(t_data *data, int tcs, int tcb);
 
 #endif

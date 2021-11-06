@@ -6,7 +6,7 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 22:55:51 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/11/04 22:36:13 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/11/06 21:40:19 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ int		moves_down(t_data *data, int tcb)
 	if (tcb == data->c)
 		rrotatenode(data->stack_a, 'a');
 	else
-		while (i++ < data->initial - tcb)
+		while (i++ < data->c - tcb)
 			rrotatenode(data->stack_a, 'a');
-	if (data->c - tcb == 1 && tcb != data->c)
+	if (tcb != data->c)
 		rrotatenode(data->stack_a, 'a');
 	ret = (*data->stack_a)->number;
 	pushnode(data->stack_a, data->stack_b, 'b');
@@ -60,5 +60,6 @@ int		launch_moves(t_data *data, int tcs, int tcb)
 		ret = moves_top(data, tcs);
 	else
 		ret = moves_down(data, tcb);
+	data->c--;
 	return (ret);
 }
