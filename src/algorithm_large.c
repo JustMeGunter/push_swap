@@ -6,7 +6,7 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 19:21:40 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/11/06 21:48:47 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/11/07 20:03:09 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,46 +27,24 @@ int		num_chunks(int c)
 void	load_moves(t_data *data, int size, int nn, int **tmp_arr)
 {
 	t_stack	*tmp_stack;
-	int		i;
-	int		j;
-	int		k;
-	int		l;
-	int		s;
+	t_vloop vloop;	
 	
-	i = data->initial - size - 1;
-	j = 0;
-	while (++i < data->initial)
+	vloop.i = data->initial - size - 1;
+	vloop.j = 0;
+	while (++vloop.i < data->initial)
 	{
 		tmp_stack = *data->stack_a;
-		k = 1;
+		vloop.k = 1;
 		while (tmp_stack)
 		{
-			l = 0;
+			vloop.y = tmp_stack->number;
 			if (data->c_chunk)
-			{
-				s = 0;
-				while (l < nn)
-				{
-					if (data->c_chunk[l] == data->tarr[i])
-						s = 1;
-					l++;
-				}
-				if ( !s && tmp_stack->number == data->tarr[i])
-				{
-					(*tmp_arr)[j] = k;	
-					j++;
-				}
-			}
+				iter_chunk(data, nn, tmp_arr, &vloop);	
 			else
-			{
-				if	(tmp_stack->number == data->tarr[i])
-				{
-					(*tmp_arr)[j] = k;	
-					j++;
-				}
-			}
+				if	(tmp_stack->number == data->tarr[vloop.i])
+					(*tmp_arr)[vloop.j++] = vloop.k;	
 			tmp_stack = tmp_stack->next;
-			k++;
+			vloop.k++;
 		}
 	}
 }
@@ -128,14 +106,12 @@ void	algorithm_large(t_data *data)
 	while (tc-- > 0)
 		data->tarr[tc] = data->arr[tc];
 	ft_order_array(&data->tarr, data->c);
-	//
 	n_chunks = num_chunks(data->c + 1); 
 	tc = n_chunks;
 	if ((data->c + 1) - (n_chunks * ((data->c + 1) / n_chunks)) != 0)
 		n_chunks = n_chunks + 1;
 	size = (data->c + 1) / tc;
 	printf("\nsize:%i, num:%i, data->c: %i\n", size, n_chunks, data->c);
-	//
 	select_min_num_move(data, size, n_chunks);
 	free(data->tarr);
 }

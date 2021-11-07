@@ -6,7 +6,7 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/18 17:25:20 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/10/30 22:22:20 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/11/07 20:02:45 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,4 +117,5 @@ int	main(int argc, char *argv[])
 * -start from smallest to largest chunk
 * -and swap into stack b if higher its bigger in the top of the steack or rotate if its 
 * bigger than the smaller in stack b for the first chunk. For the others only swap.
+* - control last chunk size for return prepare_moves...
  */

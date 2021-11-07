@@ -6,7 +6,7 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/18 17:28:24 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/11/06 21:49:11 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/11/07 19:54:24 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,10 @@ typedef struct s_stack
 }				t_stack;
 typedef struct	s_vloop
 {
-	char	k;
+	int		k;
 	int		i;
 	int		j;
+	int		y;
 }	t_vloop;
 typedef struct	s_data
 {
@@ -76,8 +77,9 @@ t_stack	*ft_newstack(int number);
 void	ft_stackdel(t_stack **stack);
 void	ft_stackclear(t_stack **stack, void(*del)(int));
 void	ft_order_array(int **arr, int c);
-int		return_smaller(int *arr, int size, data);
-int		return_bigger(int *arr, int size, data);
+int		return_smaller(int *arr, int size, t_data *data);
+int		return_bigger(int *arr, int size, t_data *data);
 int		launch_moves(t_data *data, int tcs, int tcb);
+void	iter_chunk(t_data *data, int nn, int **tmp_arr, t_vloop *vloop);
 
 #endif

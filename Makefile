@@ -6,7 +6,7 @@
 #    By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/27 02:44:28 by acrucesp          #+#    #+#              #
-#    Updated: 2021/10/31 00:22:03 by acrucesp         ###   ########.fr        #
+#    Updated: 2021/11/07 19:42:12 by acrucesp         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ SRC					=	main.c parse_args.c init_stack.c ft_swapnode.c\
 						cases_algorithm_four.c ft_newstack.c ft_stackadd_front.c\
 						ft_stackdel.c algorithm_five.c algorithm_large.c\
 						prepare_moves_algorithm_large.c \
-						launch_moves_algorithm_large.c
+						launch_moves_algorithm_large.c iter_chunk_algorithm_large.c\
+
 
 OBJ_DIR				=	obj/
 OBJ					= 	$(addprefix $(OBJ_DIR), $(SRC:%.c=%.o))
