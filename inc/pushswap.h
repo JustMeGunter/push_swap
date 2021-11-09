@@ -6,7 +6,7 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/18 17:28:24 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/11/07 21:01:07 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/11/09 17:49:53 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,8 @@ t_stack	*ft_newstack(int number);
 void	ft_stackdel(t_stack **stack);
 void	ft_stackclear(t_stack **stack, void(*del)(int));
 void	ft_order_array(int **arr, int c);
-int		return_smaller(int *arr, int size, t_data *data);
-int		return_bigger(int *arr, int size, t_data *data);
+int		return_smaller(int *arr, int size);
+int		return_bigger(int *arr, int size);
 int		launch_moves(t_data *data, int tcs, int tcb);
 void	iter_chunk(t_data *data, int **tmp_arr, t_vloop *vloop);
 

@@ -6,13 +6,13 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 22:36:17 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/11/07 19:30:06 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/11/09 18:39:10 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <pushswap.h>
 
-int	return_smaller(int *arr, int size, t_data *data)
+int	return_smaller(int *arr, int size)
 {
 	int	i;
 	int	j;
@@ -20,7 +20,10 @@ int	return_smaller(int *arr, int size, t_data *data)
 
 	i = -1;
 	j = -1;
-	size = size - (data->initial - data->c);
+	if (size > 1)
+		size = size - 1;
+	else if (size == 0)
+		size = 1;
 	while (++i < size)
 	{
 		while (++j < size)
@@ -33,7 +36,7 @@ int	return_smaller(int *arr, int size, t_data *data)
 	return (tcs);
 }
 
-int	return_bigger(int *arr, int size, t_data *data)
+int	return_bigger(int *arr, int size)
 {
 	int	i;
 	int	k;
@@ -41,7 +44,10 @@ int	return_bigger(int *arr, int size, t_data *data)
 
 	i = -1;
 	k = -1;
-	size = size - (data->initial - data->c);
+	if (size > 1)
+		size = size - 1;
+	else if (size == 0)
+		size = 1;
 	while (++i < size)
 	{
 		while (++k < size)
