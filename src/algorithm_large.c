@@ -6,7 +6,7 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 19:21:40 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/11/09 18:40:23 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/11/11 20:04:55 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ static void	load_moves(t_data *data, int size, int **tmp_arr)
 	t_vloop vloop;	
 	int		tmp;
 	
-	//build with data->n_chunk vloop.i
 	if (data->in_chunks != data->n_chunks)
 	{
 		tmp = data->initial - size * (data->in_chunks - data->n_chunks);
@@ -52,11 +51,13 @@ static void	load_moves(t_data *data, int size, int **tmp_arr)
 			if (data->c_chunk)
 				iter_chunk(data, tmp_arr, &vloop);	
 			else
+			{
 				if	(tmp_stack->number == data->tarr[vloop.i])
 				{
 					(*tmp_arr)[vloop.j++] = vloop.k;	
 					printf("chunk: %i, moves: %i\n", data->tarr[vloop.i], vloop.k);
 				}
+			}
 			tmp_stack = tmp_stack->next;
 			vloop.k++;
 		}
@@ -81,7 +82,8 @@ static void	execute_moves(t_data *data, int size, int **tmp_arr)
 	{
 		tcs = return_smaller(*tmp_arr, i);
 		tcb = return_bigger(*tmp_arr, i);
-		num = launch_moves(data, tcs, tcb);
+		if (*data->stack_a)
+			num = launch_moves(data, tcs, tcb);
 		printf("---->%i\n", num);
 		data->c_chunk[j++] = num;
 		printf("----x%i\n", data->c_chunk[j - 1]);
