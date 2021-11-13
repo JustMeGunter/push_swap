@@ -6,7 +6,7 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 19:21:40 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/11/11 20:04:55 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/11/13 16:44:45 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ static void	execute_moves(t_data *data, int size, int **tmp_arr)
 		load_moves(data, size, tmp_arr);
 	}
 	free(data->c_chunk);
+	//phase 2 while data->tarr getting the bigger for push to stack_a while into stack b
+	//when search for the biggest in the stack_b calculate n_moves to know if need to rrb or rb
 }
 
 static void	select_min_num_move(t_data *data, int size)
@@ -123,9 +125,9 @@ void	algorithm_large(t_data *data)
 	ft_order_array(&data->tarr, data->c);
 	data->n_chunks = num_chunks(data->c + 1); 
 	tc = data->n_chunks;
-	data->in_chunks = data->n_chunks;
-	if ((data->c + 1) - (data->n_chunks * ((data->c + 1) / data->n_chunks)) != 0)
+	if ((data->c) - (data->n_chunks * ((data->c) / data->n_chunks)) != 0)
 		data->n_chunks = data->n_chunks + 1;
+	data->in_chunks = data->n_chunks;
 	size = (data->c + 1) / tc;
 	printf("\nsize:%i, num:%i, data->c: %i\n", size, data->n_chunks, data->c);
 	select_min_num_move(data, size);
