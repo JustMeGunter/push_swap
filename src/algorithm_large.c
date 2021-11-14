@@ -6,132 +6,49 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 19:21:40 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/11/14 16:22:28 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/11/14 20:17:22 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <pushswap.h>
 
-static int	num_chunks(int c)
-{
-	int		result;
-	float	div;
-
-	div = 2;
-	result = 0;
-	while (result > (0.2 * c) || result == 0)
-		result = c / div++;
-	return (div - 1);
-}
-
-static void	load_moves(t_data *data, int size, int **tmp_arr)
+int		sort_stack(t_data *data)
 {
 	t_stack	*tmp_stack;
-	t_vloop vloop;	
-	int		tmp;
-	
-	if (data->in_chunks != data->n_chunks)
+	t_stack	*new_stack;
+
+	tmp_stack = *data->stack_a;
+	while(tmp_stack->next)
 	{
-		tmp = data->initial - size * (data->in_chunks - data->n_chunks);
-		vloop.i = data->initial - (size * (data->in_chunks - data->n_chunks + 1)) - 1;
+		new_stack = tmp_stack->next;
+		if (tmp_stack->number > new_stack->number)
+			return (1);
+		tmp_stack = tmp_stack->next;
 	}
-	else
-	{
-		tmp = data->initial;
-		vloop.i = data->initial - size - 1;
-	}
-	vloop.j = 0;
-	while (++vloop.i < tmp)
-	{
-		tmp_stack = *data->stack_a;
-		vloop.k = 1;
-		while (tmp_stack)
-		{
-			vloop.y = tmp_stack->number;
-			if (data->c_chunk)
-				iter_chunk(data, tmp_arr, &vloop);	
-			else
-			{
-				if	(tmp_stack->number == data->tarr[vloop.i])
-				{
-					(*tmp_arr)[vloop.j++] = vloop.k;	
-					//printf("chank: %i, moves: %i\n", data->tarr[vloop.i], vloop.k);
-				}
-			}
-			tmp_stack = tmp_stack->next;
-			vloop.k++;
-		}
-	}
-}
-
-
-static void	execute_moves(t_data *data, int size, int **tmp_arr)
-{
-	int	tcb;
-	int	tcs;
-	int	i;
-	int	j;
-	int num;
-
-	i = size;
-	j = 0;
-	data->c_chunk = (int *)malloc(sizeof(int) * size);	
-	if (!data->c_chunk)
-		exit (0);
-	while (i--)
-	{
-		tcs = return_smaller(*tmp_arr, i);
-		tcb = return_bigger(*tmp_arr, i);
-		if (*data->stack_a)
-			num = launch_moves(data, tcs, tcb);
-		//printf("---->%i\n", num);
-		data->c_chunk[j++] = num;
-		//printf("----x%i\n", data->c_chunk[j - 1]);
-		load_moves(data, size, tmp_arr);
-	}
-	free(data->c_chunk);
-	//phase 2 while data->tarr getting the bigger for push to stack_a while into stack b
-	//when search for the biggest in the stack_b calculate n_moves to know if need to rrb or rb
-}
-
-static void	select_min_num_move(t_data *data, int size)
-{
-	int *tmp_arr;
-
-	tmp_arr = (int *)malloc(size * sizeof(int));
-	if (!tmp_arr)
-		exit (0);
-	while (data->n_chunks)
-	{	
-		load_moves(data, size, &tmp_arr);
-		execute_moves(data, size, &tmp_arr);
-		data->n_chunks--;
-	}
-	free(tmp_arr);
-	//phase 2 init
-	phase_two(data, size);
+	return (0);
 }
 
 void	algorithm_large(t_data *data)
 {
-	int		size;
-	int		tc;
-
-	data->tarr = (int *)malloc(data->c * sizeof(int));
-	if (!data->tarr)
-		exit (0);
-	tc = data->c;
-	data->initial = data->c;
-	while (tc-- > 0)
-		data->tarr[tc] = data->arr[tc];
-	ft_order_array(&data->tarr, data->c);
-	data->n_chunks = num_chunks(data->c + 1); 
-	tc = data->n_chunks;
-	if ((data->c) - (data->n_chunks * ((data->c) / data->n_chunks)) != 0)
-		data->n_chunks = data->n_chunks + 1;
-	data->in_chunks = data->n_chunks;
-	size = (data->c + 1) / tc;
-	printf("\nsize:%i, num:%i, data->c: %i\n", size, data->n_chunks, data->c);
-	select_min_num_move(data, size);
-	free(data->tarr);
+	int	i;
+	int	j;
+	
+	i = 0;
+	j = 0;
+	order_array_inverted(&data->arr, data->c, data);
+	while (sort_stack(data))
+	{
+		while (i < data->c)
+		{
+			if ((*data->stack_a)->number & (1 << j)) 
+				rotatenode(data->stack_a, 'a');
+			else 
+				pushnode(data->stack_a, data->stack_b, 'b');
+			i++;
+		}
+		while (*data->stack_b)
+			pushnode(data->stack_b, data->stack_a, 'a');
+		j++;
+		i = 0;
+	}
 }

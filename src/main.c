@@ -6,7 +6,7 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/18 17:25:20 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/11/07 20:02:45 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/11/14 20:10:51 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,8 @@ int	main(int argc, char *argv[])
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 	t_data	data;
-    int		*arr;
 
-	atexit(check_leaks);
+	//atexit(check_leaks);
 	if (argc < 3)
 		error_msg();
     data.c = 0;
@@ -95,21 +94,21 @@ int	main(int argc, char *argv[])
     while (argv[++data.c])
         if (!digit_parser(argv[data.c]) && error_msg())
             return (0);
-    if (!load_initial_values(argv, &arr) && error_msg())
+    if (!load_initial_values(argv, &data.arr) && error_msg())
         exit (0);
     data.c = notnull_values(argv);
-	if (!no_rn(arr, data.c) && error_msg()) 
+	if (!no_rn(data.arr, data.c) && error_msg()) 
 		exit (0);
-	if (reverse_array(&arr, data.c) && !init_stack(arr, data.c, &stack_a))
+	if (reverse_array(&data.arr, data.c) && !init_stack(data.arr, data.c, &stack_a))
 		exit (0);
-	load_data(&data, &stack_a, &stack_b, arr);
+	load_data(&data, &stack_a, &stack_b, data.arr);
 	select_resolution(&data);
-	read_stack(stack_a);
-	write(1, "\n", 1);
-	read_stack(stack_b);
+	//read_stack(stack_a);
+	//write(1, "\n", 1);
+	//read_stack(stack_b);
 	ft_stackdel(&stack_a);
 	ft_stackdel(&stack_b);
-	free(arr);
+	free(data.arr);
 }
 /*
 * Big than five:
