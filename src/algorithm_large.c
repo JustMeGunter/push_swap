@@ -6,7 +6,7 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 19:21:40 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/11/13 16:44:45 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/11/14 16:22:28 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static void	load_moves(t_data *data, int size, int **tmp_arr)
 				if	(tmp_stack->number == data->tarr[vloop.i])
 				{
 					(*tmp_arr)[vloop.j++] = vloop.k;	
-					printf("chunk: %i, moves: %i\n", data->tarr[vloop.i], vloop.k);
+					//printf("chank: %i, moves: %i\n", data->tarr[vloop.i], vloop.k);
 				}
 			}
 			tmp_stack = tmp_stack->next;
@@ -84,9 +84,9 @@ static void	execute_moves(t_data *data, int size, int **tmp_arr)
 		tcb = return_bigger(*tmp_arr, i);
 		if (*data->stack_a)
 			num = launch_moves(data, tcs, tcb);
-		printf("---->%i\n", num);
+		//printf("---->%i\n", num);
 		data->c_chunk[j++] = num;
-		printf("----x%i\n", data->c_chunk[j - 1]);
+		//printf("----x%i\n", data->c_chunk[j - 1]);
 		load_moves(data, size, tmp_arr);
 	}
 	free(data->c_chunk);
@@ -108,6 +108,8 @@ static void	select_min_num_move(t_data *data, int size)
 		data->n_chunks--;
 	}
 	free(tmp_arr);
+	//phase 2 init
+	phase_two(data, size);
 }
 
 void	algorithm_large(t_data *data)
