@@ -6,7 +6,7 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/17 16:41:29 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/10/24 21:25:58 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/11/15 19:57:56 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	algorithm_two(int **arr, int c, t_stack **stack_a)
 	while (tc-- > 0)
 		tarr[tc] = (*arr)[tc];
 	ft_order_array(&tarr, c);
-	if ((*arr)[1] == tarr[0])	
+	if ((*arr)[1] == tarr[0])
 		swapnode(stack_a, 'a');
 	free(tarr);
 }

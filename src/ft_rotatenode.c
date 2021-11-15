@@ -6,7 +6,7 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 19:23:30 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/10/17 16:27:42 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/11/15 20:46:24 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	rotatenodes(t_stack **stack_a, t_stack **stack_b)
 	write(1, "rr\n", 3);
 }
 
-void draw_rotate(char c)
+static void	draw_rotate(char c)
 {
 	if (c == 'a')
 		write(1, "ra\n", 3);
@@ -39,7 +39,7 @@ void	rotatenode(t_stack **stack, char c)
 	{
 		tmp.tmp_last = tmp.tmp_stack->next;
 		if (tmp.tmp_last->next)
-			tmp.tmp_stack = tmp.tmp_stack->next;	
+			tmp.tmp_stack = tmp.tmp_stack->next;
 		else
 			vars.k = 1;
 		vars.i++;

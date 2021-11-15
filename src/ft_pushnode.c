@@ -6,7 +6,7 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/09 20:09:36 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/10/16 20:45:35 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/11/15 19:35:22 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	pushnode(t_stack **stack_a, t_stack **stack_b, char c)
 {
 	t_stack	*tmp_a;
-	t_stack *tmp;
-	t_stack *test;
+	t_stack	*tmp;
+	t_stack	*test;
 
 	tmp_a = *stack_a;
 	tmp = *stack_a;
@@ -31,7 +31,7 @@ void	pushnode(t_stack **stack_a, t_stack **stack_b, char c)
 		test = *stack_b;
 		*stack_a = tmp->next;
 		tmp_a->next = test;
-		*stack_b = tmp_a; 	
+		*stack_b = tmp_a;
 	}
 	if (c == 'a')
 		write(1, "pa\n", 3);

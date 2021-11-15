@@ -6,13 +6,13 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 20:06:32 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/10/24 21:27:19 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/11/15 19:59:50 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <pushswap.h>
 
-static void second_step(t_data *data)
+static void	second_step(t_data *data)
 {
 	t_stack	*tmp_stack;
 	int		tc;
@@ -28,7 +28,7 @@ static void second_step(t_data *data)
 	tc = -1;
 	while (tmp_stack)
 	{
-		data->arr[++tc] = tmp_stack->number; 
+		data->arr[++tc] = tmp_stack->number;
 		tmp_stack = tmp_stack->next;
 	}
 	reverse_array(&data->arr, data->c);
@@ -43,8 +43,8 @@ static void	first_step(t_data *data)
 	int		i;
 	int		j;
 
-	i = 0; 
-	j = 0; 
+	i = 0;
+	j = 0;
 	tmp_stack = *data->stack_a;
 	while (!j && tmp_stack)
 	{

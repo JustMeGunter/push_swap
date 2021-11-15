@@ -6,7 +6,7 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 22:36:17 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/11/09 18:39:10 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/11/15 19:41:21 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	return_smaller(int *arr, int size)
 				j = size + 1;
 		if (j == size)
 			tcs = arr[i];
-		j = -1;	
+		j = -1;
 	}
 	return (tcs);
 }
@@ -55,8 +55,7 @@ int	return_bigger(int *arr, int size)
 				k = size + 1;
 		if (k == size)
 			tcb = arr[i];
-		k = -1;	
+		k = -1;
 	}
 	return (tcb);
 }
-

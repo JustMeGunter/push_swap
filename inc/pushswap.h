@@ -6,7 +6,7 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/18 17:28:24 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/11/14 18:35:22 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/11/15 19:32:01 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,19 @@
 # include <libft.h>
 # include <stdio.h>
 
-
 typedef struct s_stack
 {
 	int		number;
 	void	*next;
 }				t_stack;
-typedef struct	s_vloop
+typedef struct s_vloop
 {
 	int		k;
 	int		i;
 	int		j;
 	int		y;
 }	t_vloop;
-typedef struct	s_data
+typedef struct s_data
 {
 	int		c;
 	int		initial;
@@ -42,7 +41,7 @@ typedef struct	s_data
 	t_stack	**stack_a;
 	t_stack	**stack_b;
 }	t_data;
-typedef struct	s_tmpstacks
+typedef struct s_tmpstacks
 {
 	t_stack	*tmp_first;
 	t_stack	*tmp_last;
@@ -55,7 +54,7 @@ int		notnull_values(char **argv);
 int		load_initial_values(char **argv, int **arr_num);
 int		init_stack(int *arr, int c, t_stack **stack_a);
 void	swapnode(t_stack **stack, char c);
-void	swapnodes(t_stack **stack_a ,t_stack **stack_b);
+void	swapnodes(t_stack **stack_a, t_stack **stack_b);
 void	pushnode(t_stack **stack_a, t_stack **stack_b, char c);
 void	rotatenode(t_stack **stack, char c);
 void	rotatenodes(t_stack **stack_a, t_stack **stack_b);

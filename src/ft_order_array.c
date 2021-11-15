@@ -6,7 +6,7 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/17 16:43:16 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/10/24 18:53:30 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/11/15 21:26:58 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_order_array(int **arr, int c)
 {
 	int		*tmp_arr;
-	t_vloop vart;
+	t_vloop	vart;
 	int		iter_c;
 
 	iter_c = c;
@@ -33,7 +33,7 @@ void	ft_order_array(int **arr, int c)
 		vart.i = c;
 		vart.j = 0;
 	}
-    while (c-- > 0)
+	while (c-- > 0)
 		(*arr)[c] = tmp_arr[c];
 	free(tmp_arr);
 }

@@ -6,7 +6,7 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/18 17:25:20 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/11/14 21:04:51 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/11/15 19:56:54 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,6 @@ static int	error_msg(void)
 {
 	write(1, "Error\n", 6);
 	return (1);
-}
-
-void	check_leaks(void)
-{
-	system("leaks push_swap");
-}
-
-void	read_stack(t_stack *stack)
-{
-	while (stack)
-	{
-		printf("from stack:%i\n", stack->number);
-		stack = stack->next;
-	}
 }
 
 int	reverse_array(int **arr, int c)
@@ -52,7 +38,7 @@ int	reverse_array(int **arr, int c)
 
 int	no_rn(int *arr, int c)
 {
-	t_vloop tvar;
+	t_vloop	tvar;
 
 	tvar.i = -1;
 	tvar.j = -1;
@@ -76,7 +62,6 @@ void	load_data(t_data *data, t_stack **stack_a, t_stack **stack_b,
 	data->stack_a = stack_a;
 	data->stack_b = stack_b;
 	data->arr = arr;
-
 }
 
 int	main(int argc, char *argv[])
@@ -85,36 +70,25 @@ int	main(int argc, char *argv[])
 	t_stack	*stack_b;
 	t_data	data;
 
-	//atexit(check_leaks);
 	if (argc < 3)
 		error_msg();
-    data.c = 0;
+	data.c = 0;
 	stack_b = NULL;
 	ft_memset(&data, 0, sizeof(t_data));
-    while (argv[++data.c])
-        if (!digit_parser(argv[data.c]) && error_msg())
-            return (0);
-    if (!load_initial_values(argv, &data.arr) && error_msg())
-        exit (0);
-    data.c = notnull_values(argv);
-	if (!no_rn(data.arr, data.c) && error_msg()) 
+	while (argv[++data.c])
+		if (!digit_parser(argv[data.c]) && error_msg())
+			return (0);
+	if (!load_initial_values(argv, &data.arr) && error_msg())
 		exit (0);
-	if (reverse_array(&data.arr, data.c) && !init_stack(data.arr, data.c, &stack_a))
+	data.c = notnull_values(argv);
+	if (!no_rn(data.arr, data.c) && error_msg())
+		exit (0);
+	if (reverse_array(&data.arr, data.c)
+		&& !init_stack(data.arr, data.c, &stack_a))
 		exit (0);
 	load_data(&data, &stack_a, &stack_b, data.arr);
 	select_resolution(&data);
-	//read_stack(stack_a);
-	//write(1, "\n", 1);
-	//read_stack(stack_b);
 	ft_stackdel(&stack_a);
 	ft_stackdel(&stack_b);
 	free(data.arr);
 }
-/*
-* Big than five:
-* -its is dived into chunks according to an appropiation
-* -start from smallest to largest chunk
-* -and swap into stack b if higher its bigger in the top of the steack or rotate if its 
-* bigger than the smaller in stack b for the first chunk. For the others only swap.
-* - control last chunk size for return prepare_moves...
- */

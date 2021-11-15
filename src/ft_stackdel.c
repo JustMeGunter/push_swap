@@ -6,7 +6,7 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 22:14:26 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/10/19 20:33:30 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/11/15 20:39:11 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 void	ft_stackdel(t_stack **stack)
 {
 	t_stack	*tmp;
-	t_stack *tmp_next;
+	t_stack	*tmp_next;
 
 	if (!stack)
 		return ;
 	tmp = *stack;
-	while(tmp)
+	while (tmp)
 	{
 		tmp_next = tmp->next;
 		free(tmp);

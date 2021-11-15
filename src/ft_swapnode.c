@@ -6,7 +6,7 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/09 18:08:30 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/10/16 20:46:24 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/11/15 20:56:14 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ void	swapnodes(t_stack **stack_a, t_stack **stack_b)
 
 void	swapnode(t_stack **stack, char c)
 {
-	t_stack *tmp_first;
+	t_stack	*tmp_first;
 	t_stack	*tmp_second;
 	t_stack	*tmp;
 
 	tmp_first = *stack;
-	if (!tmp_first->next)	
+	if (!tmp_first->next)
 		return ;
 	tmp_second = tmp_first->next;
 	tmp = tmp_second->next;
