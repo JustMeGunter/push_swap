@@ -6,7 +6,7 @@
 #    By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/27 02:44:28 by acrucesp          #+#    #+#              #
-#    Updated: 2021/11/15 20:52:29 by acrucesp         ###   ########.fr        #
+#    Updated: 2021/11/16 18:36:58 by acrucesp         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,16 +37,14 @@ S					=	-fsanitize=address
 
 OPTIMIZED			=	-O3	
 
-CFLAGS				= 	-Wall -Wextra -Werror $(D) 
-
-UNAME_S := $(shell uname -s)
+CFLAGS				= 	-Wall -Wextra -Werror 
 
 all:				$(NAME)
 
 bonus:				all
 
 $(OBJ_DIR)%.o:		$(SRC_DIR)%.c
-	$(CC) $(CFLAGS) -I $(INC_DIR) -I Libft/inc/ -c $< -o $@ 
+	$(CC) $(CFLAGS) $(D) -I $(INC_DIR) -I Libft/inc/ -c $< -o $@ 
 
 $(OBJ): | $(OBJ_DIR)
 
@@ -57,7 +55,7 @@ $(NAME):	 		Libft/libft.a $(OBJ)
 	$(CC) $(CFLAGS) -I Libft/inc/ -I inc/ $(MAIN) $(OBJ) Libft/libft.a -o $@ 
 
 sanitize:	 		Libft/libft.a $(OBJ) 
-	$(CC) $(CFLAGS) $(S) -I Libft/inc/ -I inc/ $(MAIN) $(OBJ) Libft/libft.a -o $@ 
+	$(CC) $(CFLAGS) $(S) $(D) -I Libft/inc/ -I inc/ $(MAIN) $(OBJ) Libft/libft.a -o $@ 
 
 debug:	 		Libft/libft.a $(OBJ) 
 	$(CC) $(CFLAGS) $(D) -I Libft/inc/ -I inc/ $(MAIN) $(OBJ) Libft/libft.a -o $@ 

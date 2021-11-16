@@ -6,7 +6,7 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/18 17:25:20 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/11/15 19:56:54 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/11/16 18:30:46 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	main(int argc, char *argv[])
 	ft_memset(&data, 0, sizeof(t_data));
 	while (argv[++data.c])
 		if (!digit_parser(argv[data.c]) && error_msg())
-			return (0);
+			exit (0);
 	if (!load_initial_values(argv, &data.arr) && error_msg())
 		exit (0);
 	data.c = notnull_values(argv);

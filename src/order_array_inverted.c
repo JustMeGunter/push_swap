@@ -6,7 +6,7 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 17:37:23 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/11/15 20:53:12 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/11/16 18:45:56 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,18 @@
 void	reserve_arrays(int c, int **tmp_arr, int **tmp_r_arr, int **arr)
 {
 	int	i;
+	int	tmp;
 
 	i = -1;
+	tmp = c;
 	*tmp_arr = (int *)malloc(c * sizeof(int));
 	if (!tmp_arr)
 		exit (0);
 	*tmp_r_arr = (int *)malloc(c * sizeof(int));
 	if (!tmp_r_arr)
 		exit (0);
-	while (++i < c)
-		*tmp_r_arr[--c] = (*arr)[i];
+	while (++i < tmp)
+		(*tmp_r_arr)[--c] = (*arr)[i];
 }
 
 void	order_array_inverted(int **arr, int c, t_data *data)
