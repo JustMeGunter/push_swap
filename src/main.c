@@ -6,7 +6,7 @@
 /*   By: acrucesp <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/18 17:25:20 by acrucesp          #+#    #+#             */
-/*   Updated: 2021/11/16 18:30:46 by acrucesp         ###   ########.fr       */
+/*   Updated: 2021/11/16 19:10:17 by acrucesp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ int	main(int argc, char *argv[])
 	t_stack	*stack_b;
 	t_data	data;
 
-	if (argc < 3)
-		error_msg();
+	if (argc < 3 && error_msg())
+		exit (0);
 	data.c = 0;
 	stack_b = NULL;
 	ft_memset(&data, 0, sizeof(t_data));
